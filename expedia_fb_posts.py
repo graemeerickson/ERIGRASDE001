@@ -1,5 +1,6 @@
 from urllib.request import urlopen
 from bs4 import BeautifulSoup as soup
+import json, codecs
 
 MAX_POSTS = 8
 
@@ -29,3 +30,8 @@ for index in range(len(posts)):
     'timestamp': timestamp,
     'text': text
   }
+
+# open or create a txt file, and use json & codecs modules to write the posts object to it
+# credit: https://stackoverflow.com/questions/12309269/how-do-i-write-json-data-to-a-file
+with open('expedia_fb_posts.txt', 'wb') as outfile:
+  json.dump(postsObj, codecs.getwriter('utf-8')(outfile), ensure_ascii=False)
