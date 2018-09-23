@@ -13,25 +13,27 @@ fb_connection.close()
 # parse html using BeautifulSoup
 fb_page_soup = soup(fb_html, "html.parser")
 
-# find the first 8 FB posts based on element & class name
+# find the specified number of FB posts based on element & class name
 posts = fb_page_soup.findAll("div", {"class": "_1dwg _1w_m _q7o"}, limit=MAX_POSTS)
 
-# declare a new object to hold details of each post
-postsObj = {}
+# declare a new array to hold details of each post
+posts_arr = []
 
 # loop through posts and find each post's relevant content based on element & class name, then store results into the posts object
 for index in range(len(posts)):
+  # construct a dict containing relevant post data
   title = posts[index].find("span", {"class": "fcg"}).text
   timestamp = posts[index].find("span", {"class": "timestampContent"}).text
   text = posts[index].find("div", {"class": "_5pbx userContent _3576"}).text
   
-  postsObj[index] = {
+  # append dict to array of posts
+  posts_arr.append({
     'title': title,
     'timestamp': timestamp,
     'text': text
-  }
+  })
 
 # open or create a txt file, and use json & codecs modules to write the posts object to it
 # credit: https://stackoverflow.com/questions/12309269/how-do-i-write-json-data-to-a-file
 with open('expedia_fb_posts.txt', 'wb') as outfile:
-  json.dump(postsObj, codecs.getwriter('utf-8')(outfile), ensure_ascii=False)
+  json.dump(posts_arr, codecs.getwriter('utf-8')(outfile), ensure_ascii=False)
