@@ -21,9 +21,9 @@ I organized the logic flow of the script as follows:
   3. Find & store into a variable the first 8 Facebook posts by querying 'div' elements with class name *_1dwg _1w_m _q7o*. Set limit to 8 by referencing a constant variable defined at the top of the script so as to allow easy maintainability going forward in case the desired number of posts changes.
   4. Define a new empty list variable *posts_list* whose purpose is to store only the relevant post information from the DOM.
   5. Loop through the list variable containing the Facebook posts. With each post, find the following information and store into a dict structure, then append the resulting dict into the *posts_list* list:
-   - Post title, by querying 'span' elements with class name *fcg*
-   - Post timestamp, by querying 'span' elements with class name *timestampContent*
-   - Post text, by querying 'div' elements with class name *_5pbx userContent _3576*
+    - Post title, by querying 'span' elements with class name *fcg*
+    - Post timestamp, by querying 'span' elements with class name *timestampContent*
+    - Post text, by querying 'div' elements with class name *_5pbx userContent _3576*
   6. Create a text file (or overwrite if one already exists) called *expedia_fb_posts.txt*, and write the *posts_list* data structure into it as JSON.
 
 ### Data Structures
