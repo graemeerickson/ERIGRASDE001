@@ -1,4 +1,3 @@
-
 # ERIGRASDE001
 ## Problem
 Write a script to be executed from a command line using either python, ruby, or PowerShell that extracts the text of the last 8 posts made on the Expedia Facebook page, and re-writes such data into a text file using JSON. Be creative on writing the post text and respective date, and justify your decision.
